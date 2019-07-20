@@ -10,12 +10,17 @@ console.log('Bienvenido al Registro Vehicular \n');
 console.log('Seccion Ingresos y Reemplazos de vehiculos \n');
 var tipoVehiculoAgregarOReemplazar = readlineSync.question('Ingrese el tipo de vehiculo que desea agregar o reemplazar (auto, moto o camion) o presione "ENTER" para salir: \n');
 while (tipoVehiculoAgregarOReemplazar != '') {
-    switch (tipoVehiculoAgregarOReemplazar) {
+    switch (tipoVehiculoAgregarOReemplazar.toLowerCase()) {
         case 'moto':
-            var datosMoto = readlineSync.question('Ingrese marca, modelo, año, color, patente y cilindradas separando con ",": \n');
-            var eleccionMoto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            var arregloDatosMoto = datosMoto.split(',');
+            var arregloDatosMoto = new Array(6);
+            arregloDatosMoto[0] = readlineSync.question('Ingrese marca: ');
+            arregloDatosMoto[1] = readlineSync.question('Ingrese modelo: ');
+            arregloDatosMoto[2] = readlineSync.question('Ingrese año: ');
+            arregloDatosMoto[3] = readlineSync.question('Ingrese color: ');
+            arregloDatosMoto[4] = readlineSync.question('Ingrese patente: ');
+            arregloDatosMoto[5] = readlineSync.question('Ingrese cilindradas: ');
             var moto = new moto_1["default"](arregloDatosMoto[0], arregloDatosMoto[1], parseInt(arregloDatosMoto[2]), arregloDatosMoto[3], arregloDatosMoto[4], parseInt(arregloDatosMoto[5]));
+            var eleccionMoto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
             if (eleccionMoto == 1) {
                 miRegistro.addVehiculo(moto);
             }
@@ -25,10 +30,16 @@ while (tipoVehiculoAgregarOReemplazar != '') {
             }
             break;
         case 'camion':
-            var datosCamion = readlineSync.question('Ingrese marca, modelo, año, color, patente, peso propio (en kg) y peso de la carga (en Kg) separando con ",": \n');
-            var eleccionCamion = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            var arregloDatosCamion = datosCamion.split(',');
+            var arregloDatosCamion = new Array(7);
+            arregloDatosCamion[0] = readlineSync.question('Ingrese marca: ');
+            arregloDatosCamion[1] = readlineSync.question('Ingrese modelo: ');
+            arregloDatosCamion[2] = readlineSync.question('Ingrese año: ');
+            arregloDatosCamion[3] = readlineSync.question('Ingrese color: ');
+            arregloDatosCamion[4] = readlineSync.question('Ingrese patente: ');
+            arregloDatosCamion[5] = readlineSync.question('Ingrese peso propio del camion (en Kg): ');
+            arregloDatosCamion[6] = readlineSync.question('Ingrese peso de la carga del camion (en Kg): ');
             var camion = new camion_1["default"](arregloDatosCamion[0], arregloDatosCamion[1], parseInt(arregloDatosCamion[2]), arregloDatosCamion[3], arregloDatosCamion[4], parseInt(arregloDatosCamion[5]), parseInt(arregloDatosCamion[6]));
+            var eleccionCamion = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
             if (eleccionCamion == 1) {
                 miRegistro.addVehiculo(camion);
             }
@@ -38,10 +49,14 @@ while (tipoVehiculoAgregarOReemplazar != '') {
             }
             break;
         case 'auto':
-            var datosAuto = readlineSync.question('Ingrese marca, modelo, año, color y patente separando con ",": \n');
-            var eleccionAuto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            var arregloDatosAuto = datosAuto.split(',');
+            var arregloDatosAuto = new Array(5);
+            arregloDatosAuto[0] = readlineSync.question('Ingrese marca: ');
+            arregloDatosAuto[1] = readlineSync.question('Ingrese modelo: ');
+            arregloDatosAuto[2] = readlineSync.question('Ingrese año: ');
+            arregloDatosAuto[3] = readlineSync.question('Ingrese color: ');
+            arregloDatosAuto[4] = readlineSync.question('Ingrese patente: ');
             var auto = new auto_1["default"](arregloDatosAuto[0], arregloDatosAuto[1], parseInt(arregloDatosAuto[2]), arregloDatosAuto[3], arregloDatosAuto[4]);
+            var eleccionAuto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
             if (eleccionAuto == 1) {
                 miRegistro.addVehiculo(auto);
             }

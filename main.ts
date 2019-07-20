@@ -14,25 +14,43 @@ console.log('Seccion Ingresos y Reemplazos de vehiculos \n');
 
 let tipoVehiculoAgregarOReemplazar: string = readlineSync.question('Ingrese el tipo de vehiculo que desea agregar o reemplazar (auto, moto o camion) o presione "ENTER" para salir: \n');
 while (tipoVehiculoAgregarOReemplazar != '') {
-    switch (tipoVehiculoAgregarOReemplazar) {
+    switch (tipoVehiculoAgregarOReemplazar.toLowerCase()) {
         case 'moto':
-            let datosMoto: string = readlineSync.question('Ingrese marca, modelo, año, color, patente y cilindradas separando con ",": \n')
-            let eleccionMoto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            let arregloDatosMoto: string[] = datosMoto.split(',');
+            let arregloDatosMoto: string[] = new Array(6);
+            arregloDatosMoto[0] = readlineSync.question('Ingrese marca: ');
+            arregloDatosMoto[1] = readlineSync.question('Ingrese modelo: ');
+            arregloDatosMoto[2] = readlineSync.question('Ingrese año: ');
+            arregloDatosMoto[3] = readlineSync.question('Ingrese color: ');
+            arregloDatosMoto[4] = readlineSync.question('Ingrese patente: ');
+            arregloDatosMoto[5] = readlineSync.question('Ingrese cilindradas: ');
+
             let moto: Vehiculo = new Moto(arregloDatosMoto[0], arregloDatosMoto[1], parseInt(arregloDatosMoto[2]), arregloDatosMoto[3], arregloDatosMoto[4], parseInt(arregloDatosMoto[5]))
+
+            let eleccionMoto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
+
             if (eleccionMoto == 1) {
                 miRegistro.addVehiculo(moto);
             }
             else if (eleccionMoto == 2) {
                 let posicionMoto = readlineSync.questionInt('En qué posicion de la lista se encuentra la moto que desea reemplazar?: \n')
-                miRegistro.updateVehiculo(moto, posicionMoto)
+                miRegistro.updateVehiculo(moto, posicionMoto);
             }
             break;
+
         case 'camion':
-            let datosCamion: string = readlineSync.question('Ingrese marca, modelo, año, color, patente, peso propio (en kg) y peso de la carga (en Kg) separando con ",": \n')
-            let eleccionCamion = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            let arregloDatosCamion: string[] = datosCamion.split(',');
+            let arregloDatosCamion: string[] = new Array(7);
+            arregloDatosCamion[0] = readlineSync.question('Ingrese marca: ')
+            arregloDatosCamion[1] = readlineSync.question('Ingrese modelo: ')
+            arregloDatosCamion[2] = readlineSync.question('Ingrese año: ')
+            arregloDatosCamion[3] = readlineSync.question('Ingrese color: ')
+            arregloDatosCamion[4] = readlineSync.question('Ingrese patente: ')
+            arregloDatosCamion[5] = readlineSync.question('Ingrese peso propio del camion (en Kg): ')
+            arregloDatosCamion[6] = readlineSync.question('Ingrese peso de la carga del camion (en Kg): ')
+
             let camion: Vehiculo = new Camion(arregloDatosCamion[0], arregloDatosCamion[1], parseInt(arregloDatosCamion[2]), arregloDatosCamion[3], arregloDatosCamion[4], parseInt(arregloDatosCamion[5]), parseInt(arregloDatosCamion[6]))
+
+            let eleccionCamion = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
+
             if (eleccionCamion == 1) {
                 miRegistro.addVehiculo(camion);
             }
@@ -42,10 +60,17 @@ while (tipoVehiculoAgregarOReemplazar != '') {
             }
             break;
         case 'auto':
-            let datosAuto: string = readlineSync.question('Ingrese marca, modelo, año, color y patente separando con ",": \n')
-            let eleccionAuto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
-            let arregloDatosAuto: string[] = datosAuto.split(',');
+            let arregloDatosAuto: string[] = new Array(5);
+            arregloDatosAuto[0] = readlineSync.question('Ingrese marca: ');
+            arregloDatosAuto[1] = readlineSync.question('Ingrese modelo: ');
+            arregloDatosAuto[2] = readlineSync.question('Ingrese año: ');
+            arregloDatosAuto[3] = readlineSync.question('Ingrese color: ');
+            arregloDatosAuto[4] = readlineSync.question('Ingrese patente: ');
+
             let auto: Vehiculo = new Auto(arregloDatosAuto[0], arregloDatosAuto[1], parseInt(arregloDatosAuto[2]), arregloDatosAuto[3], arregloDatosAuto[4]);
+
+            let eleccionAuto = readlineSync.questionInt('Presione 1 para agregarlo al listado o presione 2 para reemplazarlo por otro: \n');
+
             if (eleccionAuto == 1) {
                 miRegistro.addVehiculo(auto);
             }
@@ -54,7 +79,7 @@ while (tipoVehiculoAgregarOReemplazar != '') {
                 miRegistro.updateVehiculo(auto, posicionAuto);
             }
             break;
-        default: console.log('Ha ingresado un dato erróneo.\n')
+        default: console.log('Ha ingresado un dato erróneo.\n');
     }
 
     tipoVehiculoAgregarOReemplazar = readlineSync.question('Ingrese el tipo de vehiculo que desea agregar o reemplazar (auto, moto o camion) o presione "ENTER" para salir: \n');
@@ -97,3 +122,4 @@ while (vehiculoBuscado != '') {
 console.log('Impresion del listado actualizado con las modificaciones realizadas: \n');
 
 miRegistro.getVehiculosList();
+
