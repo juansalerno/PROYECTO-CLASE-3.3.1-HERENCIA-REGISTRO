@@ -26,9 +26,9 @@ var Auto = /** @class */ (function (_super) {
     };
     Auto.prototype.cambiarEstadoBaul = function () {
         if (this.conBaul)
-            return this.conBaul = false;
+            this.conBaul = false;
         else
-            return this.conBaul = true;
+            this.conBaul = true;
     };
     return Auto;
 }(vehiculo_1["default"]));

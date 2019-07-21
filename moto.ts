@@ -8,7 +8,7 @@ export default class Moto extends Vehiculo {
         this.cilindradas = cilindradas;
     }
 
-    public getCilindradas() {
+    public getCilindradas(): number {
         return this.cilindradas
     }
 

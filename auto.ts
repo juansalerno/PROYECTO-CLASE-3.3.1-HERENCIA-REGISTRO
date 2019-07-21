@@ -8,14 +8,14 @@ export default class Auto extends Vehiculo {
         this.conBaul = true;
     }
 
-    public getConBaul() {
+    public getConBaul(): boolean {
         return this.conBaul
     }
 
-    public cambiarEstadoBaul() {
+    public cambiarEstadoBaul(): void {
         if (this.conBaul)
-            return this.conBaul = false;
+            this.conBaul = false;
         else
-            return this.conBaul = true;
+            this.conBaul = true;
     }
 }

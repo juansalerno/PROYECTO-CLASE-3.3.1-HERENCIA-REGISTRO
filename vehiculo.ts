@@ -36,7 +36,7 @@ export default class Vehiculo {
         this.velocidadActual -= 1;
     }
 
-    public setKilometraje(n: number) {
+    public setKilometraje(n: number): void {
         this.kilometraje += n;
     }
 

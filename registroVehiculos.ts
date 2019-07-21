@@ -16,15 +16,13 @@ export default class RegistroVehiculos {
         console.log("\n");
         for (let i = 0; i < this.baseDatos.length; i++) {
             console.log(this.baseDatos[i]);
-        }
+        }   
         console.log("\n");
     }
 
     public addVehiculo(vehiculo: Vehiculo): void {
         this.baseDatos.push(vehiculo);
     }
-
-
 
     public getVehiculoByIndex(index: number): Vehiculo {
         if (index > 0 && index <= this.baseDatos.length)

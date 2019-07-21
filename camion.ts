@@ -10,11 +10,11 @@ export default class Camion extends Vehiculo {
         this.pesoPropio = pesoPropio;
     }
 
-    public getPesoPropio() {
+    public getPesoPropio(): number {
         return this.pesoPropio;
     }
 
-    public getPesoCarga() {
+    public getPesoCarga(): number {
         return this.pesoCarga;
     }
 }
